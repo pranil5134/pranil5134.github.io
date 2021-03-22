@@ -1,0 +1,63 @@
+body{
+    background-color:grey;
+}
+.background{
+    background:whitesmoke;
+    
+}
+.color-brown{
+    color: brown;
+}
+.fontsize-smallest{
+    font-size: x-small;
+    
+}
+.fontsize-small{
+    font-size: small;
+}
+.font-large{
+    font-size: xx-large;
+    line-height: 3rem;
+}
+.font-largest{
+    font-size:8.1vw ;
+    width: fit-content;
+    margin-top: -0.4vw !important;
+
+}
+.grid-container1{
+   background-color:  red;
+}
+.grid-container{
+    background-color: chartreuse;
+}
+hr{
+    border-top: 2px solid grey ;
+}
+.pt-0{
+    padding-top: -10px;
+}
+.trapezoid {
+	border-bottom: 25px solid brown;
+	border-right: 5px solid transparent;
+	height: 0;
+	width: 100px;
+    color: white;
+    font-style: italic;
+}
+.carousel-caption{
+    right: 5%;
+    left:45%;
+    bottom: 2%;
+    padding-bottom: 0%;
+}
+.circle {
+        width: 50px;
+        height: 50px;
+        line-height: 15px;
+        border-radius: 50%;
+        font-size: 50px;
+        color: #fff;
+        text-align: center;
+        background: #000
+}

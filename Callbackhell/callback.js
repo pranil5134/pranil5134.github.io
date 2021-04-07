@@ -5,9 +5,6 @@ let h1=document.createElement('h3')
 maindiv.appendChild(h1)
 document.body.append(maindiv)
 
-
-calculator(4,5,sum,div,mul,sub)
-var count=10
 setTimeout(() => {
     h1.innerText=count
     

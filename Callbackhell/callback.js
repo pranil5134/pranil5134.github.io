@@ -4,7 +4,7 @@ let h1=document.createElement('h3')
 
 maindiv.appendChild(h1)
 document.body.append(maindiv)
-
+let count=10
 setTimeout(() => {
     h1.innerText=count
     

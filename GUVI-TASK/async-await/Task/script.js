@@ -12,7 +12,7 @@ fluid_cointainer.setAttribute('class', 'container-fluid')
 let row = document.createElement('div')
 row.setAttribute('id', 'row_1')
 row.setAttribute('class', 'row  mt-n2 ')
-row.style.border="2px solid #bde688"
+row.style.borderTop="2px solid #bde688"
 let i = false
 
 function display(data) {

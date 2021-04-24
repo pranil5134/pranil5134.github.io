@@ -2,14 +2,14 @@
 let Task = 1;
 
 function addtask() {
-    let table = document.getElementById("record-table")
-    let row = table.insertRow();
-    row.setAttribute('id', "row" + Task)
-    row.setAttribute('onclick', "getSelectedRow()")
-    let check = document.createElement('input')
-    check.setAttribute('type', 'checkbox')
-    check.setAttribute('id', Task)
     if (document.TASK_FORM.task_title.value != "") {
+        let table = document.getElementById("record-table")
+        let row = table.insertRow();
+        row.setAttribute('id', "row" + Task)
+        row.setAttribute('onclick', "getSelectedRow()")
+        let check = document.createElement('input')
+        check.setAttribute('type', 'checkbox')
+        check.setAttribute('id', Task)
         if (document.body.contains(document.getElementById('Alert'))) {
             document.getElementById('Alert').remove()
         }
@@ -20,20 +20,19 @@ function addtask() {
         //cell1.setAttribute('id',"cell"+Task)
         // let cell2 = row.insertCell(2);
         cell0.append(check)
-        let str1=document.getElementById("Task_desc").value
-        str1=str1.replace (/(?!$|\n)([^\n]{20}(?!\n))/g, '$1\n');
- 
-        cell1.innerHTML = "<h6>"+document.getElementById("Task").value+"</h4>"+"<br>"+"<i>"+ str1+"</i>"
+        let str1 = document.getElementById("Task_desc").value
+        str1 = str1.replace(/(?!$|\n)([^\n]{20}(?!\n))/g, '$1\n');
+
+        cell1.innerHTML = "<h6>" + document.getElementById("Task").value + "</h4>" + "<br>" + "<i>" + str1 + "</i>"
         // cell2.innerHTML = document.getElementById("Task_desc").value
         Task = Task + 1
         document.TASK_FORM.reset();
     }
     else {
-        i=false
+
         if (document.body.contains(document.getElementById('Alert'))) {
             document.getElementById('Alert').remove()
         }
-        i = true
         let Alert = document.createElement('section')
         Alert.setAttribute('id', 'Alert')
         Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger")
@@ -46,81 +45,104 @@ function addtask() {
 
 }
 
-
 function deletetask() {
     var table = document.getElementById("record-table");
-    var rows =table.getElementsByTagName("tr")
-    for (var i = 1, row; row = table.rows[i]; i++) {
-        //iterate through rows
-        console.log(row.id)
-        let checkid = document.getElementById(row.children[0].id).children[0].id
-        if (document.body.contains(document.getElementById(checkid))) {
-
-            if (document.getElementById(checkid).checked) {
-                console.log(document.getElementById(row.children[0].id).children[0].id)
-                
-                row.remove()
-                i=i-1
-
+    if (table.rows.length <= 1) {
+        if (document.body.contains(document.getElementById('Alert'))) {
+            document.getElementById('Alert').remove()
+        }
+        let Alert = document.createElement('section')
+        Alert.setAttribute('id', 'Alert')
+        Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger")
+        let Alert_heading = document.createElement('h4')
+        Alert_heading.setAttribute('class', 'alert-heading')
+        Alert_heading.innerHTML = "Table is empty"
+        Alert.append(Alert_heading)
+        document.body.prepend(Alert)
+    }
+    else {
+        if (document.body.contains(document.getElementById('Alert'))) {
+            document.getElementById('Alert').remove()
+        }
+        for (var i = 1, row; row = table.rows[i]; i++) {
+            //iterate through rows
+            console.log(table.rows.length)
+            if (table.rows.length >= 1) {
+                console.log("its working")
+                let checkid = document.getElementById(row.children[0].id).children[0].id
+                if (document.body.contains(document.getElementById(checkid))) {
+                    if (document.getElementById(checkid).checked) {
+                        row.remove()
+                        i = i - 1
+                    }
+                }
             }
+            else {
+                if (document.body.contains(document.getElementById('Alert'))) {
+                    document.getElementById('Alert').remove()
+                }
+                let Alert = document.createElement('section')
+                Alert.setAttribute('id', 'Alert')
+                Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger")
+                let Alert_heading = document.createElement('h4')
+                Alert_heading.setAttribute('class', 'alert-heading')
+                Alert_heading.innerHTML = "Table is empty or you have not selected any task"
+                Alert.append(Alert_heading)
+                document.body.prepend(Alert)
+            }
+
         }
     }
 
-}
 
+}
 
 var index;  // variable to set the selected row index
 function getSelectedRow() {
     var table = document.getElementById("record-table");
 
-    for (var i = 1,row; row = table.rows[i]; i++) {
+    for (var i = 1, row; row = table.rows[i]; i++) {
         if (document.body.contains(table.rows[i])) {
 
             table.rows[i].onclick = function () {
                 // clear the selected from the previous selected row
                 // the first time index is undefined
                 // console.log( table.rows.length)
-                for (var j = 1,rows; rows = table.rows[j]; j++){
-                if (typeof index !== "undefined" && table.rows[index].classList.contains("selected")) {
-                    
-                        console.log(index,this.rowIndex)
+                for (var j = 1, rows; rows = table.rows[j]; j++) {
+                    if (typeof index !== "undefined" && table.rows[index].classList.contains("selected")) {
+
+                        console.log(index, this.rowIndex)
                         console.log("first condition")
-                        if(index==this.rowIndex)
-                         {
+                        if (index == this.rowIndex) {
                             table.rows[index].classList.remove('selected')
                             table.rows[index].classList.remove('bg-white')
                             break
-                         }
-                       
-                        else
-                        {
+                        }
+
+                        else {
                             table.rows[index].classList.remove('selected')
                             table.rows[index].classList.remove('bg-white')
-                         continue
+                            continue
                         }
-                } 
-
-                else if (typeof index !== "undefined") {
+                    }
+                    else if (typeof index !== "undefined") {
                         index = this.rowIndex;
                         console.log(this.rowIndex)
                         console.log("second condition")
-
-                        
                         table.rows[index].classList.toggle("selected");
                         table.rows[index].classList.toggle("bg-white");
                         break
-                       // this.classList.remove('selected')
-                       // this.classList.remove('bg-white')
+                        // this.classList.remove('selected')
+                        // this.classList.remove('bg-white')
                     }
-
-                else {
-                    console.log("third condition")
-                    index = this.rowIndex;
-                    this.classList.toggle("selected");
-                    table.rows[index].classList.toggle("bg-white");
-                    break;
+                    else {
+                        console.log("third condition")
+                        index = this.rowIndex;
+                        this.classList.toggle("selected");
+                        table.rows[index].classList.toggle("bg-white");
+                        break;
+                    }
                 }
-            }
             };
         }
 
@@ -128,14 +150,9 @@ function getSelectedRow() {
 
 }
 
-
-
-
-
 function upNdown(direction) {
     var rows = document.getElementById("record-table").rows,
         parent = rows[index].parentNode;
-
     //console.log(rows[index].parentNode)
     if (direction === "up") {
         if (index > 1) {
@@ -145,7 +162,6 @@ function upNdown(direction) {
             index--;
         }
     }
-
     if (direction === "down") {
         if (index < rows.length - 1) {
             parent.insertBefore(rows[index + 1], rows[index]);
@@ -154,3 +170,21 @@ function upNdown(direction) {
         }
     }
 }
+
+var el;  
+var e2;  
+let title_length= 70 
+let desc_length=200                                               
+function countCharacters(length,input_id,length_id) {  
+    console.log("hi")                                  
+  var textEntered, countRemaining, counter;          
+  textEntered = document.getElementById(input_id).value;  
+  counter = (length - (textEntered.length));
+  countRemaining = document.getElementById(length_id); 
+  countRemaining.textContent = counter+"/"+length;       
+}
+e2= document.getElementById("Task")
+e2.addEventListener('keyup', function(){countCharacters(title_length,"Task","title_charactersRemaining")}, false);
+el = document.getElementById('Task_desc');                   
+el.addEventListener('keyup', function(){countCharacters(desc_length,"Task_desc","desc_charactersRemaining")}, false);
+

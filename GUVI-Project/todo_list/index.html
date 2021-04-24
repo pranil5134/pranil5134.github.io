@@ -51,12 +51,14 @@
                                 <div class="form-group">
                                     <label for="Task">Enter Task:</label>
                                     <div>
-                                        <input class="form-control border border-dark" id="Task"
+                                        <input class="form-control border border-dark"  maxlength = "70" id="Task"
                                             placeholder="Enter Task Title" name="task_title">
+                                            <div id="title_charactersRemaining">50/50</div>
                                     </div>
                                     <div class="mt-3">
-                                        <textarea class="form-control span6 border border-dark" rows="3" id="Task_desc"
+                                        <textarea class="form-control span6 border border-dark" rows="3"  maxlength = "200" id="Task_desc"
                                             placeholder="Enter Task Description" name="task_desc"></textarea>
+                                            <div id="desc_charactersRemaining">200/200</div>
                                     </div>
                                     <div class="text-center mt-3">
                                         <button type="button" class="btn btn-secondary" onclick="addtask()">Add
@@ -101,7 +103,6 @@
         </div>
 
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

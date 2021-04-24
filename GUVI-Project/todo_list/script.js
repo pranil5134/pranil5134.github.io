@@ -1,8 +1,6 @@
 
 let Task = 1;
 
-
-
 function addtask() {
     let table = document.getElementById("record-table")
     let row = table.insertRow();
@@ -16,14 +14,17 @@ function addtask() {
             document.getElementById('Alert').remove()
         }
         let cell0 = row.insertCell(0)
-        cell0.style.width = "10%"
+        // cell0.style.width = "10%"
         cell0.setAttribute('id', "cell" + Task)
         let cell1 = row.insertCell(1);
         //cell1.setAttribute('id',"cell"+Task)
-        let cell2 = row.insertCell(2);
+        // let cell2 = row.insertCell(2);
         cell0.append(check)
-        cell1.innerHTML = document.getElementById("Task").value
-        cell2.innerHTML = document.getElementById("Task_desc").value
+        let str1=document.getElementById("Task_desc").value
+        str1=str1.replace (/(?!$|\n)([^\n]{20}(?!\n))/g, '$1\n');
+ 
+        cell1.innerHTML = "<h6>"+document.getElementById("Task").value+"</h4>"+"<br>"+"<i>"+ str1+"</i>"
+        // cell2.innerHTML = document.getElementById("Task_desc").value
         Task = Task + 1
         document.TASK_FORM.reset();
     }

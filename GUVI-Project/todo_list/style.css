@@ -1,24 +1,35 @@
 body {
 
-  padding: 25px;
   background-image: url('Background.png');
   background-repeat: no-repeat;
   background-size: auto;
   
 }
+#Help:focus {
+  background-color: rgb(122, 121, 235);
+}
+
+img {
+  width: 100%;
+}
 table,tr,td,th{
     table-layout: fixed;
     overflow: auto;
-    border: 2px solid black!important;
+    border: 1px solid black!important;
+}
+.tooltip-inner {
+  max-width: 350px;
+  /* If max-width does not work, try using width instead */
+  width: 350px; 
 }
 td:hover{
     cursor:move;
     }
 
     @media only screen and (max-width: 800px) {
-        th:nth-child(3),td:nth-child(3) {
+        /* th:nth-child(3),td:nth-child(3) {
           display:none;
-        }
+        } */
         html,th,td{
           font-size: smaller;
         }

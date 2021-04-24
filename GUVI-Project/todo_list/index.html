@@ -6,11 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO DO</title>
-   
+
 </head>
 
 <body>
-    <div class="flex-container  h-100">
+    <div class="flex-container p-0  h-100">
+        <!-- Button trigger modal -->
+        <button id="Help" type="button" class="btn btn-ligth m-3" data-toggle="modal" data-target="#exampleModal" autofocus>
+            How to 1. Add 2. delete and 3. Prioritize Task
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" autofocus>Steps</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <a href="Add Task.png" target="_blank"><h5> <span class="glyphicon glyphicon-fullscreen"></span> To Add Task</h5></a>
+                        <img src="Add Task.png" alt="Add Task">
+                    <a href="Delete Task.png" target="_blank"><h5><br> <span class="glyphicon glyphicon-fullscreen"></span> To Delete Task</h5></a>
+                        <img src="Delete Task.png" alt="Add Task">
+                      <a href="priotatize Task.png" target="_blank"> <h5><br>  <span class="glyphicon glyphicon-fullscreen"></span> To Prioritize Task</h5></a>
+                        <img src="priotatize Task.png" alt="Add Task">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container m-lg-5 h-100">
             <section class="row">
                 <div class="col">
@@ -21,16 +51,16 @@
                                 <div class="form-group">
                                     <label for="Task">Enter Task:</label>
                                     <div>
-                                        <input class="form-control border border-dark" id="Task" placeholder="Enter Task Title"
-                                            name="task_title">
+                                        <input class="form-control border border-dark" id="Task"
+                                            placeholder="Enter Task Title" name="task_title">
                                     </div>
                                     <div class="mt-3">
                                         <textarea class="form-control span6 border border-dark" rows="3" id="Task_desc"
                                             placeholder="Enter Task Description" name="task_desc"></textarea>
                                     </div>
                                     <div class="text-center mt-3">
-                                        <button type="button" class="btn btn-secondary"
-                                            onclick="addtask()">button</button>
+                                        <button type="button" class="btn btn-secondary" onclick="addtask()">Add
+                                            Task</button>
                                     </div>
                                 </div>
                             </div>
@@ -39,39 +69,58 @@
                     </form>
             </section>
         </div>
-        <div class="container mx-lg-5  h-100">
+        <div class="container  h-100">
             <section class="row">
-                <section class="col-1"></section>
-                <section class="col">
+                <section class="col-lg-1"></section>
+                <section class="col-lg-10 col-sm-12">
                     <table id="record-table" data-pagination="true" data-search="true" data-show-toggle="true"
                         data-use-row-attr-func="true" data-reorderable-rows="true" data-url="json/data1.json"
                         class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 10%;"></th>
-                                <th scope="col">Task Title</th>
-                                <th scope="col">Task Description</th>
+                                <th scope="col" style="width: 20%;"></th>
+                                <th scope="col" class="text-center">Task</th>
                             </tr>
                         </thead>
                         <tbody>
-                           
+
                         </tbody>
                     </table>
-                    <button onclick="upNdown('up');">&ShortUpArrow;</button>
-                    <button onclick="upNdown('down');">&ShortDownArrow;</button>
+                    <button onclick="upNdown('up');" data-toggle="tooltip" data-placement="right"
+                        title="Select Task by clicking on the row and then press this button to adjust priority of that task">Move
+                        task up&ShortUpArrow;</button>
+                    <button onclick="upNdown('down');" data-toggle="tooltip" data-placement="right"
+                        title="Select Task by clicking on the row and then press this button to adjust priority of that task">Move
+                        task down&ShortDownArrow;</button>
                 </section>
-                <section class="col-1"></section>
+                <section class="col-lg-1"></section>
             </section>
             <section class="text-center m-5 ">
                 <button type="button" class="btn btn-danger" onclick="deletetask()">Delete Tasks</button>
             </section>
         </div>
-       
+
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script  src="script.js" defer></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </body>
 
 </html>

@@ -1,6 +1,15 @@
-table td{
+body {
+
+  padding: 25px;
+  background-image: url('Background.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  
+}
+table,tr,td,th{
     table-layout: fixed;
-    overflow: hidden;
+    overflow: auto;
+    border: 2px solid black!important;
 }
 td:hover{
     cursor:move;
@@ -9,5 +18,8 @@ td:hover{
     @media only screen and (max-width: 800px) {
         th:nth-child(3),td:nth-child(3) {
           display:none;
+        }
+        html,th,td{
+          font-size: smaller;
         }
       }

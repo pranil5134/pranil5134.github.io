@@ -182,12 +182,12 @@ function countCharacters(length, input_id, length_id) {
     if (textEntered.length >= length) {
         textEntered.value = textEntered.slice(0, length)
     }
-    else {
+  
         counter = (length - (textEntered.length));
         console.log(counter)
         countRemaining = document.getElementById(length_id);
         countRemaining.textContent = counter + "/" + length;
-    }
+
 }
 
 

@@ -171,29 +171,27 @@ function upNdown(direction) {
     }
 }
 
-var el;  
-var e2;  
-let title_length= 70 
-let desc_length=200                                               
- function countCharacters(length,input_id,length_id) {  
-                                    
-  var textEntered, countRemaining, counter;          
-  textEntered = document.getElementById(input_id).value;  
-  if(textEntered.length>=length)
-  {
-    textEntered.value =textEntered.slice(0,length)
-  }
-  counter = (length - (textEntered.length));
-  console.log(counter)
-  countRemaining =document.getElementById(length_id); 
-  countRemaining.textContent = counter+"/"+length;     
+var el;
+var e2;
+let title_length = 70
+let desc_length = 200
+function countCharacters(length, input_id, length_id) {
+
+    var textEntered, countRemaining, counter;
+    textEntered = document.getElementById(input_id).value;
+    if (textEntered.length >= length) {
+        textEntered.value = textEntered.slice(0, length)
+    }
+    else {
+        counter = (length - (textEntered.length));
+        console.log(counter)
+        countRemaining = document.getElementById(length_id);
+        countRemaining.textContent = counter + "/" + length;
+    }
 }
 
-function countCharacters1(length,input_id,length_id) {  
-    countCharacters(length,input_id,length_id) 
-    console.log("hii this is paste")
-}
-e2= document.getElementById("Task")
-e2.addEventListener('keyup', function(){countCharacters(title_length,"Task","title_charactersRemaining")}, false);
-el = document.getElementById('Task_desc');                   
-el.addEventListener('keyup', function(){countCharacters(desc_length,"Task_desc","desc_charactersRemaining")}, false);
+
+e2 = document.getElementById("Task")
+e2.addEventListener('keyup', function () { countCharacters(title_length, "Task", "title_charactersRemaining") }, false);
+el = document.getElementById('Task_desc');
+el.addEventListener('keyup', function () { countCharacters(desc_length, "Task_desc", "desc_charactersRemaining") }, false);

@@ -179,7 +179,7 @@ function countCharacters(length,input_id,length_id) {
     console.log("hi")                                
   var textEntered, countRemaining, counter;          
   textEntered = document.getElementById(input_id).value;  
-  if(textEntered.length==length)
+  if(textEntered.length>=length)
   {
     textEntered.value =textEntered.slice(0,length)
   }

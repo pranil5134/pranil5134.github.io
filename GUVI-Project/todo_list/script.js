@@ -176,9 +176,13 @@ var e2;
 let title_length= 70 
 let desc_length=200                                               
 function countCharacters(length,input_id,length_id) {  
-    console.log("hi")                                  
+    console.log("hi")                                
   var textEntered, countRemaining, counter;          
   textEntered = document.getElementById(input_id).value;  
+  if(textEntered.length==length)
+  {
+    textEntered.value =textEntered.slice(0,length)
+  }
   counter = (length - (textEntered.length));
   countRemaining = document.getElementById(length_id); 
   countRemaining.textContent = counter+"/"+length;       

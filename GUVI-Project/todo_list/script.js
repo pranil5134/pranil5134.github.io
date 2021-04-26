@@ -171,11 +171,11 @@ function AlertBox(message) {
     }
     let Alert = document.createElement('section')
     Alert.setAttribute('id', 'Alert')
-    Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger sticky-top")
+    Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger position-sticky")
     let Alert_heading = document.createElement('h4')
     Alert_heading.setAttribute('class', 'alert-heading')
     Alert_heading.innerHTML = message
     Alert.append(Alert_heading)
-    document.getElementById("Help").append(Alert)
+    document.getElementById("sticky-section").append(Alert)
     return false
 }

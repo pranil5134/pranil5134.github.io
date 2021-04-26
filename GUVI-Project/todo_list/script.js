@@ -176,6 +176,6 @@ function AlertBox(message) {
     Alert_heading.setAttribute('class', 'alert-heading')
     Alert_heading.innerHTML = message
     Alert.append(Alert_heading)
-    document.body.prepend(Alert)
+    document.getElementById("Help").append(Alert)
     return false
 }

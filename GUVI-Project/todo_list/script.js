@@ -57,6 +57,12 @@ function deletetask() {
                 let checkid = document.getElementById(row.children[0].id).children[0].id
                 if (document.body.contains(document.getElementById(checkid))) {
                     if (document.getElementById(checkid).checked) {
+                        if(table.rows[index].classList.contains("selected"))
+                        {
+                            table.rows[index].classList.remove('selected')
+                            table.rows[index].classList.remove('bg-white')
+                            index=undefined
+                        }
                         row.remove()
                         i = i - 1
                         notchecked=false
@@ -83,9 +89,14 @@ function getSelectedRow() {
                 // clear the selected from the previous selected row
                 // the first time index is undefined
                 for (var j = 1, rows; rows = table.rows[j]; j++) {
-                    if (typeof index !== "undefined" && table.rows[index].classList.contains("selected")) {
 
-
+                    if (typeof index=="undefined") {
+                        index = this.rowIndex;
+                        this.classList.toggle("selected");
+                        table.rows[index].classList.toggle("bg-white");
+                        break;
+                    }
+                    else if (typeof index !== "undefined" && table.rows[index].classList.contains("selected")) {
                         if (index == this.rowIndex) {
                             table.rows[index].classList.remove('selected')
                             table.rows[index].classList.remove('bg-white')
@@ -104,12 +115,7 @@ function getSelectedRow() {
                         table.rows[index].classList.toggle("bg-white");
                         break
                     }
-                    else {
-                        index = this.rowIndex;
-                        this.classList.toggle("selected");
-                        table.rows[index].classList.toggle("bg-white");
-                        break;
-                    }
+                  
                 }
             };
         }
@@ -136,8 +142,7 @@ function upNdown(direction) {
 }
 
 async function countCharacters(length, input_id, length_id) {
-
-    var textEntered, countRemaining, counter;
+   var textEntered, countRemaining, counter;
     textEntered = await document.getElementById(input_id).value;
     if (textEntered.length > length) {
         textEntered = textEntered.slice(0, length)
@@ -160,9 +165,11 @@ el = document.getElementById('Task_desc');
 el.addEventListener('keyup', function () { countCharacters(desc_length, "Task_desc", "desc_charactersRemaining") }, false);
 
 
-function pastedisable() {
-
+function pastedisable(input_id) {
+    console.log("hello")
+    document.getElementById(input_id).value=""
     AlertBox("Paste operation is not allowed")
+    return false
 }
 
 function AlertBox(message) {
@@ -177,5 +184,4 @@ function AlertBox(message) {
     Alert_heading.innerHTML = message
     Alert.append(Alert_heading)
     document.getElementById("sticky-section").append(Alert)
-    return false
 }

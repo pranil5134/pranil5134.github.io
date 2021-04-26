@@ -24,9 +24,11 @@ function addtask() {
         cell0.setAttribute('id', "cell" + Task)
         let cell1 = row.insertCell(1);
         cell0.append(check)
-        let str1 = document.getElementById("Task_desc").value
+        let str1=document.getElementById("Task").value
+        let str2 = document.getElementById("Task_desc").value
         str1 = str1.replace(/(?!$|\n)([^\n]{20}(?!\n))/g, '$1\n');
-        cell1.innerHTML = "<h6>" + document.getElementById("Task").value + "</h4>" + "<br>" + "<i>" + str1 + "</i>"
+        str2=   str1.replace(/(?!$|\n)([^\n]{20}(?!\n))/g, '$1\n');
+        cell1.innerHTML = "<h6>" + str1 + "</h4>" + "<br>" + "<i>" + str2 + "</i>"
         Task = Task + 1
         document.TASK_FORM.reset();
         countCharacters(50, "Task", "title_charactersRemaining")
@@ -51,11 +53,9 @@ function deletetask() {
         }
         for (var i = 1, row; row = table.rows[i]; i++) {
             //iterate through rows
-            console.log(table.rows.length)
             if (table.rows.length >= 1) {          
                 let checkid = document.getElementById(row.children[0].id).children[0].id
                 if (document.body.contains(document.getElementById(checkid))) {
-                    console.log("its working")
                     if (document.getElementById(checkid).checked) {
                         row.remove()
                         i = i - 1
@@ -67,7 +67,6 @@ function deletetask() {
         
         }
         if(notchecked) {
-            console.log("its not working")
             AlertBox("Table is empty or you have not selected any task")
         }
     }
@@ -86,8 +85,7 @@ function getSelectedRow() {
                 for (var j = 1, rows; rows = table.rows[j]; j++) {
                     if (typeof index !== "undefined" && table.rows[index].classList.contains("selected")) {
 
-                        console.log(index, this.rowIndex)
-                        console.log("first condition")
+
                         if (index == this.rowIndex) {
                             table.rows[index].classList.remove('selected')
                             table.rows[index].classList.remove('bg-white')
@@ -102,14 +100,11 @@ function getSelectedRow() {
                     }
                     else if (typeof index !== "undefined") {
                         index = this.rowIndex;
-                        console.log(this.rowIndex)
-                        console.log("second condition")
                         table.rows[index].classList.toggle("selected");
                         table.rows[index].classList.toggle("bg-white");
                         break
                     }
                     else {
-                        console.log("third condition")
                         index = this.rowIndex;
                         this.classList.toggle("selected");
                         table.rows[index].classList.toggle("bg-white");
@@ -128,7 +123,6 @@ function upNdown(direction) {
         parent = rows[index].parentNode;
     if (direction === "up") {
         if (index > 1) {
-            console.log(rows[index], rows[index - 1])
             parent.insertBefore(rows[index], rows[index - 1]);
             index--;
         }
@@ -146,16 +140,14 @@ async function countCharacters(length, input_id, length_id) {
     var textEntered, countRemaining, counter;
     textEntered = await document.getElementById(input_id).value;
     if (textEntered.length > length) {
-        textEntered.value = textEntered.slice(0, length)
+        textEntered = textEntered.slice(0, length)
+        document.getElementById(input_id).value=textEntered
         textEntered.length = length
         counter = (length - (textEntered.length));
-        console.log(length, textEntered.length)
         countRemaining = document.getElementById(length_id);
         countRemaining.textContent = counter + "/" + length;
     } else {
-
         counter = (length - (textEntered.length));
-        console.log(length, textEntered.length)
         countRemaining = document.getElementById(length_id);
         countRemaining.textContent = counter + "/" + length;
     }

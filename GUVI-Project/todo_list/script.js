@@ -1,7 +1,13 @@
 
 let Task = 1;
+var el;
+var e2;
+let title_length = 50
+let desc_length = 200
+var index;
 
 function addtask() {
+
     if (document.TASK_FORM.task_title.value != "") {
         let table = document.getElementById("record-table")
         let row = table.insertRow();
@@ -27,38 +33,21 @@ function addtask() {
         // cell2.innerHTML = document.getElementById("Task_desc").value
         Task = Task + 1
         document.TASK_FORM.reset();
+        countCharacters(50, "Task", "title_charactersRemaining")
+        countCharacters(200, "Task_desc", "desc_charactersRemaining")
     }
     else {
 
-        if (document.body.contains(document.getElementById('Alert'))) {
-            document.getElementById('Alert').remove()
-        }
-        let Alert = document.createElement('section')
-        Alert.setAttribute('id', 'Alert')
-        Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger")
-        let Alert_heading = document.createElement('h4')
-        Alert_heading.setAttribute('class', 'alert-heading')
-        Alert_heading.innerHTML = "Please enter task title"
-        Alert.append(Alert_heading)
-        document.body.prepend(Alert)
+        AlertBox("Please enter task title")
     }
 
 }
 
 function deletetask() {
     var table = document.getElementById("record-table");
+
     if (table.rows.length <= 1) {
-        if (document.body.contains(document.getElementById('Alert'))) {
-            document.getElementById('Alert').remove()
-        }
-        let Alert = document.createElement('section')
-        Alert.setAttribute('id', 'Alert')
-        Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger")
-        let Alert_heading = document.createElement('h4')
-        Alert_heading.setAttribute('class', 'alert-heading')
-        Alert_heading.innerHTML = "Table is empty"
-        Alert.append(Alert_heading)
-        document.body.prepend(Alert)
+        AlertBox("Table is empty")
     }
     else {
         if (document.body.contains(document.getElementById('Alert'))) {
@@ -78,17 +67,8 @@ function deletetask() {
                 }
             }
             else {
-                if (document.body.contains(document.getElementById('Alert'))) {
-                    document.getElementById('Alert').remove()
-                }
-                let Alert = document.createElement('section')
-                Alert.setAttribute('id', 'Alert')
-                Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger")
-                let Alert_heading = document.createElement('h4')
-                Alert_heading.setAttribute('class', 'alert-heading')
-                Alert_heading.innerHTML = "Table is empty or you have not selected any task"
-                Alert.append(Alert_heading)
-                document.body.prepend(Alert)
+
+                AlertBox("Table is empty or you have not selected any task")
             }
 
         }
@@ -96,8 +76,6 @@ function deletetask() {
 
 
 }
-
-var index;  // variable to set the selected row index
 function getSelectedRow() {
     var table = document.getElementById("record-table");
 
@@ -171,23 +149,20 @@ function upNdown(direction) {
     }
 }
 
-var el;
-var e2;
-let title_length = 70
-let desc_length = 200
-function countCharacters(length, input_id, length_id) {
+async function countCharacters(length, input_id, length_id) {
 
     var textEntered, countRemaining, counter;
-    textEntered = document.getElementById(input_id).value;
-    if (textEntered.length >= length) {
+    textEntered = await document.getElementById(input_id).value;
+    if (textEntered.length > length) {
         textEntered.value = textEntered.slice(0, length)
-    }
-  
+        textEntered.length = length
+    } else {
+
         counter = (length - (textEntered.length));
-        console.log(counter)
+        console.log(length, textEntered.length)
         countRemaining = document.getElementById(length_id);
         countRemaining.textContent = counter + "/" + length;
-
+    }
 }
 
 
@@ -195,3 +170,24 @@ e2 = document.getElementById("Task")
 e2.addEventListener('keyup', function () { countCharacters(title_length, "Task", "title_charactersRemaining") }, false);
 el = document.getElementById('Task_desc');
 el.addEventListener('keyup', function () { countCharacters(desc_length, "Task_desc", "desc_charactersRemaining") }, false);
+
+
+function pastedisable() {
+
+    AlertBox("Paste operation is not allowed")
+}
+
+function AlertBox(message) {
+    if (document.body.contains(document.getElementById('Alert'))) {
+        document.getElementById('Alert').remove()
+    }
+    let Alert = document.createElement('section')
+    Alert.setAttribute('id', 'Alert')
+    Alert.setAttribute('class', "alert alert-warning alert-dismissible border border-danger sticky-top")
+    let Alert_heading = document.createElement('h4')
+    Alert_heading.setAttribute('class', 'alert-heading')
+    Alert_heading.innerHTML = message
+    Alert.append(Alert_heading)
+    document.body.prepend(Alert)
+    return false
+}

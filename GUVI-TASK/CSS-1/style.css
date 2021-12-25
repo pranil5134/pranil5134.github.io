@@ -1,0 +1,252 @@
+body{
+  background-color: black;
+}
+.slidecontainer {
+    width: 100%;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  #myinput {
+    border-radius: 8px;
+    height: 4px;
+    width: 150px;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 14px;
+    -webkit-appearance: none;
+    height: 14px;
+    background: whitesmoke;
+    border-radius:50%;
+    cursor: pointer;
+    border-width:2px;
+    border-color:grey;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: orange;
+    cursor: pointer;
+    border-width:2px;
+    border-color:grey;
+  }
+  input[type='range'] {
+        width: 70%;
+        height: 7pt;
+        -webkit-appearance: none;
+        background-color: orange;
+      }
+ 
+.background{
+    background-color: white;
+    position:absolute;
+    margin: auto;
+    margin-left: 25%;
+    height:fit-content;
+    width: 60%;
+    padding-bottom: 3rem;
+}
+.heading{
+    background-color:#565656 ;
+    position: relative;
+    height: 25%;
+    width: 100%;
+    margin-top: -1%;
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+.profile-img{
+ position: relative;
+ margin: auto;
+ width:fit-content;
+ height: fit-content;
+ margin-top: 7%;
+}
+/* .patch{
+    background-color: white;
+    position:absolute;
+    width: 100%;
+    height: 10%;
+    margin-top: -3%;
+} */
+.image-profile{
+    border-radius: 50%;
+    margin-left: 10%;
+    border:2px dotted #e5b746;
+}
+.candidate-name{
+    background-color: #fabe28;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    position: relative;
+    height: fit-content;
+    width:fit-content;
+    margin: auto;
+    align-items: center;
+    align-content: center;
+    margin-top: -5%;
+    padding: 1% 1% 1% 1%;
+    border-radius: 5%;
+}
+.contact-detail{
+    position: relative;
+    font-family:'Roboto', sans-serif;
+    color:#888686;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 2%;
+    text-align: center;
+
+}
+.dot {
+    height: 100%;
+    width: 10%;
+    background-color: #bbb;
+    border-radius: 50%;
+  }
+hr{
+    border: 1.8px solid #cccc;
+    border-radius: 2px;
+}
+.logo{
+    height: fit-content;
+    width: 50%;
+    margin-left: 4%;
+    margin-top: 3%;
+}
+.Icon{
+    float: left;
+}
+.logo1{
+    float:left;
+    margin-right: 4%;
+    margin-top: 2% !important;
+    margin-left: 1% !important;
+}
+.category-title{
+    position: relative;
+    margin-left: 30px;
+    padding-top: 10px;
+}
+.vl {
+    position: absolute;
+    border-left:  2px solid #cccc;
+    height: 77rem;
+    margin-left: 50%;
+  }
+.date{
+    text-align: right;
+}
+
+.section-left{  
+    position: relative;
+    margin-top: 3%;
+    margin-left: 4%;
+    margin-right: 8%;
+    text-align: justify;
+}
+.section-right{
+    float: left;
+    width: 92%;
+    margin-top: 3%;
+    margin-right: 8%;
+    margin-left: 2%;
+    text-align:justify
+} 
+th{
+    text-align: center;
+    font-size: small;
+}
+td{
+    font-size: small;
+    text-align: left;
+    width:15rem;
+} 
+
+.progress{
+   padding-right: 0rem  !important; 
+}
+.leftside{
+    float: left;
+    width: 50%;
+    
+}
+.rigthside{
+    float: right;
+    width:49%;
+    margin-left: 1%;
+}
+.w3-orange{
+    float: left;
+    background-image: linear-gradient(to right,orange,rgb(230, 190, 103));
+}
+.w3-grey{
+    float: left;
+    background-color: #888686;;
+}
+.w3-blue{
+    float: left;
+    background-color: #888686;
+    border-radius: 50%;
+    height: 1rem;
+    width:10%;
+    
+}
+
+#range{
+    -webkit-appearance:none ;
+    width:100%;
+    height:0.5rem;
+    background-image: linear-gradient(to right,orange,rgb(230, 190, 103));
+}
+#range::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+    
+}
+#selector{
+    position:absolute;
+    top:23%;
+    left:80%;
+    z-index: 2;
+}
+/* .SelectBtn{
+    height: 15px;
+    width:15px;
+    background-color: whitesmoke;
+    border-radius:  50%;
+} */
+@media  only screen and (max-width:600px){
+
+    .background{
+        width: 100%;
+        margin: auto;
+        margin-left: -2.5%;
+        top:0%;
+    }
+    .contact-detail{
+        margin-top: 2%;
+        font-size: 9px;
+        margin-left: 8px;
+    }
+}
